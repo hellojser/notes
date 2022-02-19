@@ -1,0 +1,35 @@
+name: deploy hellojser.com
+
+on:
+  push:
+    branches:
+      - master
+      - feat/deploy
+    paths-ignore:
+      - README.md
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@master
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: "Build Blog Page"
+        run: |
+          npm i
+          npm run build
+
+      - name: Deploy to aliyun server
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: "-avzr --delete"
+          SOURCE: "public/"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: "~/www/notes"
