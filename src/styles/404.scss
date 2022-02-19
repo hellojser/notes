@@ -1,0 +1,36 @@
+.container--error {
+    height: 100vh;
+
+    >main {
+        display: grid;
+        margin: 20vh auto;
+    }
+
+    .tag {
+        border-radius: 1rem;
+        width: fit-content;
+        padding: .2rem .8rem;
+
+        background: var(--gradient-theme);
+
+        font-size: 3rem;
+        font-weight: bold;
+        color: var(--color-bg);
+    }
+
+    .title {
+        font-size: 5rem;
+        font-weight: bold;
+        color: var(--color-heading);
+    }
+
+    .desc {
+        font-size: 1.5rem;
+        color: var(--color-text);
+    }
+
+    .back-btn {
+        font-weight: bold;
+        color: var(--color-theme);
+    }
+}
