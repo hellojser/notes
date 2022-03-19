@@ -34,5 +34,3 @@ function binarySearch(arr, target) {
   return false;
 }
 ```
-
-## 演变
